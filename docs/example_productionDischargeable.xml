@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<placeable>
+    <productionDischargeable>
+        <activationTrigger node="playerTrigger" />
+        <dischargeNodes>
+            <dischargeNode node="dischargeNode" fillTypes="GRAVEL_FINE TOPSOIL" emptySpeed="100" name="Production discharge" maxDistance="20" defaultEnabled="false">
+                <info width="2" length="2" />
+                <raycast useWorldNegYDirection="true" />
+            </dischargeNode>
+        </dischargeNodes>
+    </productionDischargeable>
+</placeable>

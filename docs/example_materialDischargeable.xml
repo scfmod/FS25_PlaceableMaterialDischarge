@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<placeable>
+    <materialDischargeable>
+        <activationTrigger node="playerTrigger" />
+        <dischargeNodes>
+            <dischargeNode node="dischargeNodeFront" fillTypes="STONE ROADSALT" litersPerHour="3000" name="Frontside discharge" maxDistance="20" defaultEnabled="false">
+                <info width="2" length="2" />
+                <raycast useWorldNegYDirection="true" />
+                <effects>
+                    <effectNode effectNode="effectSmoke" materialType="unloadingSmoke" fadeTime="0.5" useFruitColor="true" />
+                    <effectNode effectNode="effectParticle" effectClass="ParticleEffect" particleType="STONE" emitCountScale="1.5" />
+                </effects>
+                <animationNodes>
+                    <animationNode class="ScrollingAnimation" node="belt" rotSpeed="-20" rotAxis="1" shaderComponentScale="-1 0 0 0" scrollSpeed="0.5" shaderParameterName="offsetUV" />
+                </animationNodes>
+            </dischargeNode>
+
+            <dischargeNode node="dischargeNodeBack" fillTypes="GRAVEL_FINE TOPSOIL" litersPerHour="1000" name="Backside discharge" maxDistance="20">
+                <info width="4" length="2" />
+                <raycast useWorldNegYDirection="true" />
+
+                <stateObjectChanges>
+                    <objectChange node="workLight" visibilityActive="false" visibilityInactive="true" />
+                </stateObjectChanges>
+            </dischargeNode>
+        </dischargeNodes>
+    </materialDischargeable>
+</placeable>

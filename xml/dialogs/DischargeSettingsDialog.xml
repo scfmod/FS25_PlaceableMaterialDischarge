@@ -1,0 +1,164 @@
+<GUI onOpen="onOpen" onClose="onClose" onCreate="onCreate">
+    <GuiElement profile="newLayer" />
+    <Bitmap id="dialogBg" profile="dischargeSettingsDialog_fullscreenBg" />
+
+    <Bitmap id="dialogElement" profile="dischargeSettingsDialog_dialogBg">
+        <ThreePartBitmap profile="fs25_dialogBgMiddleSmall" />
+        <ThreePartBitmap profile="fs25_dialogBgTopSmall" />
+        <ThreePartBitmap profile="fs25_dialogBgBottom" />
+
+        <Text position="0px -32px" profile="dischargeSettingsDialog_title" text="$l10n_ui_changeSettings" focusInit="onOpen" />
+
+        <Bitmap profile="dischargeSettingsDialog_dialogContent">
+            <ScrollingLayout profile="dischargeSettingsDialog_layout" id="layoutBox">
+                <Bitmap profile="dischargeSettingsDialog_optionContainer">
+                    <Text profile="dischargeSettingsDialog_optionTitle" text="$l10n_ui_enabled" />
+                    <BinaryOption profile="dischargeSettingsDialog_binaryOption" onClick="onClickEnabledOption" id="enabledOption" />
+                </Bitmap>
+
+                <Bitmap profile="dischargeSettingsDialog_optionContainerAlternate">
+                    <Text profile="dischargeSettingsDialog_optionTitle" text="$l10n_ui_optionDischargeToGround" />
+                    <BinaryOption profile="dischargeSettingsDialog_binaryOption" onClick="onClickDischargeToGroundOption" id="dischargeToGroundOption" />
+                </Bitmap>
+
+                <Bitmap profile="dischargeSettingsDialog_optionContainer">
+                    <Text profile="dischargeSettingsDialog_optionTitle" text="$l10n_ui_optionDischargeToObject" />
+                    <BinaryOption profile="dischargeSettingsDialog_binaryOption" onClick="onClickDischargeToObjectOption" id="dischargeToObjectOption" />
+                </Bitmap>
+
+                <Bitmap profile="dischargeSettingsDialog_optionContainerAlternate">
+                    <Text profile="dischargeSettingsDialog_optionTitle" text="$l10n_ui_optionDischargeToVehicle" />
+                    <BinaryOption profile="dischargeSettingsDialog_binaryOption" onClick="onClickDischargeToVehicleOption" id="dischargeToVehicleOption" />
+                </Bitmap>
+
+                <Bitmap profile="dischargeSettingsDialog_optionContainer">
+                    <Text profile="dischargeSettingsDialog_optionTitle" text="$l10n_ui_optionDischargeToAnyObject" />
+                    <BinaryOption profile="dischargeSettingsDialog_binaryOption" onClick="onClickDischargeToAnyObjectOption" id="dischargeToAnyObjectOption" />
+                </Bitmap>
+
+                <Bitmap profile="dischargeSettingsDialog_optionContainerAlternate">
+                    <Text profile="dischargeSettingsDialog_optionTitle" text="$l10n_ui_litersPerSecond" id="emptySpeedTitle" />
+                    <TextInput focusOnHighlight="true" onEnterPressed="onEnterPressedInput" id="emptySpeedInput" name="emptySpeed" profile="dischargeSettingsDialog_textInput">
+                        <ThreePartBitmap profile="fs25_textInputBg" />
+                        <Bitmap profile="fs25_textInputIconBox">
+                            <Bitmap profile="fs25_textInputIcon" />
+                        </Bitmap>
+                    </TextInput>
+                </Bitmap>
+            </ScrollingLayout>
+        </Bitmap>
+
+        <BoxLayout profile="fs25_dialogButtonBox">
+            <Button id="backButton" onClick="onClickBack" profile="buttonBack" text="$l10n_button_back" />
+        </BoxLayout>
+    </Bitmap>
+
+    <GuiProfiles>
+        <Profile name="dischargeSettingsDialog_fullscreenBg" extends="dialogFullscreenBg">
+            <imageColor value="0.013 0.013 0.013 0.9" />
+        </Profile>
+
+        <Profile name="dischargeSettingsDialog_dialogBg" extends="fs25_dialogBg">
+            <size value="720px 760px" />
+            <imageColor value="0 0 0 0" />
+        </Profile>
+
+        <Profile name="dischargeSettingsDialog_dialogContent">
+            <size value="720px 720px" />
+        </Profile>
+
+        <Profile name="dischargeSettingsDialog_title" extends="fs25_dialogTitle">
+            <textSize value="18px" />
+        </Profile>
+
+        <Profile name="dischargeSettingsDialog_layout" extends="baseReference" with="anchorMiddleCenter">
+            <size value="620px 620px" />
+
+            <imageColor value="0 0 0 0" />
+            <fitFlowToElements value="true" />
+            <flowDirection value="vertical" />
+            <elementSpacing value="2dp" />
+        </Profile>
+
+        <Profile name="dischargeSettingsDialog_optionTitle" extends="fs25_settingsMultiTextOptionTitle">
+            <textBold value="false" />
+            <textSize value="16px" />
+            <textDisabledColor value="0.35 0.35 0.35 1" />
+        </Profile>
+
+        <Profile name="dischargeSettingsDialog_binaryOptionLeft" extends="emptyPanel" with="anchorStretchingYLeft">
+            <size value="50% 100%" />
+            <absoluteSizeOffset value="20px 0px" />
+            <position value="10px 0px" />
+            <textSize value="16px" />
+            <textMaxNumLines value="1" />
+            <textUpperCase value="true" />
+            <textAlignment value="center" />
+            <textLayoutMode value="scrolling" />
+            <textColor value="$preset_fs25_colorMainLight_80" />
+            <textSelectedColor value="$preset_fs25_colorMainDark" />
+        </Profile>
+
+        <Profile name="dischargeSettingsDialog_binaryOptionRight" extends="fs25_binaryOptionLeft" with="anchorStretchingYRight">
+            <position value="-10px 0px" />
+        </Profile>
+
+        <Profile name="dischargeSettingsDialog_binaryOptionSlider" extends="baseReference" with="anchorStretchingYLeft">
+            <size value="50% 100%" />
+            <imageSliceId value="gui.3dShop_button_middle" />
+            <imageColor value="$preset_fs25_colorGreyBinarySlider" />
+            <imageFocusedColor value="$preset_fs25_colorMainHighlight" />
+            <imageHighlightedColor value="$preset_fs25_colorMainHighlight" />
+            <imageDisabledColor value="0 0 0 0.2" />
+            <startImageSize value="6px 0" />
+            <startImageSliceId value="gui.3dShop_button_left" />
+            <startImageColor value="$preset_fs25_colorGreyBinarySlider" />
+            <startImageFocusedColor value="$preset_fs25_colorMainHighlight" />
+            <startImageHighlightedColor value="$preset_fs25_colorMainHighlight" />
+            <startImageDisabledColor value="0 0 0 0.2" />
+            <endImageSize value="6px 0" />
+            <endImageSliceId value="gui.3dShop_button_right" />
+            <endImageColor value="$preset_fs25_colorGreyBinarySlider" />
+            <endImageFocusedColor value="$preset_fs25_colorMainHighlight" />
+            <endImageHighlightedColor value="$preset_fs25_colorMainHighlight" />
+            <endImageDisabledColor value="0 0 0 0.2" />
+        </Profile>
+
+        <Profile name="dischargeSettingsDialog_binaryOptionBg" extends="fs25_binaryOptionBg">
+            <startImageDisabledColor value="1 0 0 0" />
+            <imageDisabledColor value="1 0 0 0" />
+            <endImageDisabledColor value="1 0 0 0" />
+        </Profile>
+
+
+        <Profile name="dischargeSettingsDialog_binaryOption" extends="baseReference" with="anchorMiddleRight">
+            <size value="180px 32px" />
+            <position value="-10px 0" />
+
+            <focusOnHighlight value="true" />
+            <autoAddDefaultElements value="true" />
+            <defaultProfileBgThreePart value="dischargeSettingsDialog_binaryOptionBg" />
+            <defaultProfileButtonLeft value="dischargeSettingsDialog_binaryOptionLeft" />
+            <defaultProfileButtonRight value="dischargeSettingsDialog_binaryOptionRight" />
+            <defaultProfileSliderThreePart value="dischargeSettingsDialog_binaryOptionSlider" />
+        </Profile>
+
+        <Profile name="dischargeSettingsDialog_optionContainer" extends="fs25_multiTextOptionContainer">
+            <size value="100% 50px" />
+            <imageColor value="0.02732 0.02732 0.02732 0.5" />
+        </Profile>
+
+        <Profile name="dischargeSettingsDialog_optionContainerAlternate" extends="dischargeSettingsDialog_optionContainer">
+            <imageColor value="$preset_fs25_colorGreyListItem" />
+        </Profile>
+
+        <Profile name="dischargeSettingsDialog_textInput" extends="fs25_textInput" with="anchorMiddleRight">
+            <size value="150px 31px" />
+            <position value="-42px 0px" />
+
+            <format value="number" />
+            <formatDecimalPlaces value="2" />
+        </Profile>
+
+    </GuiProfiles>
+</GUI>

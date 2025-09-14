@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<GUI onOpen="onOpen" onClose="onClose" onCreate="onCreate">
+    <GuiElement profile="newLayer" />
+    <Bitmap id="dialogBg" profile="dischargeMaterialDialog_dialogFullscreenBg" />
+
+    <Bitmap id="dialogElement" profile="dischargeMaterialDialog_dialogBg">
+        <ThreePartBitmap profile="fs25_dialogBgMiddleSmall" />
+        <ThreePartBitmap profile="fs25_dialogBgTopSmall" />
+        <ThreePartBitmap profile="fs25_dialogBgBottom" />
+
+        <Text position="0 -32px" profile="dischargeMaterialDialog_dialogTitle" text="$l10n_ui_changeMaterial" />
+
+        <GuiElement profile="dischargeMaterialDialog_dialogContent">
+            <SmoothList profile="dischargeMaterialDialog_list" id="list" focusInit="onOpen" onDoubleClick="onItemDoubleClick">
+                <ListItem profile="dischargeMaterialDialog_listItem">
+                    <Bitmap name="image" profile="dischargeMaterialDialog_listItemImage" />
+                    <Text name="name" profile="dischargeMaterialDialog_listItemText" />
+                </ListItem>
+            </SmoothList>
+
+            <ThreePartBitmap profile="fs25_subCategoryListSliderBox">
+                <Slider dataElementId="list" profile="dischargeMaterialDialog_listSlider" />
+            </ThreePartBitmap>
+
+            <Bitmap profile="dischargeMaterialDialog_listShadowTop" />
+            <Bitmap profile="dischargeMaterialDialog_listShadowBottom" />
+        </GuiElement>
+
+        <BoxLayout profile="fs25_dialogButtonBox">
+            <Button id="backButton" onClick="onClickBack" profile="buttonBack" text="$l10n_button_cancel" />
+            <Bitmap profile="fs25_dialogButtonBoxSeparator" />
+            <Button id="applyButton" onClick="onClickApply" profile="buttonOK" text="$l10n_button_apply" />
+        </BoxLayout>
+    </Bitmap>
+
+    <GuiProfiles>
+        <Profile name="dischargeMaterialDialog_dialogFullscreenBg" extends="dialogFullscreenBg">
+            <imageColor value="0.013 0.013 0.013 0.9" />
+        </Profile>
+
+        <Profile name="dischargeMaterialDialog_dialogBg" extends="fs25_dialogBg">
+            <size value="420px 760px" />
+            <imageColor value="0 0 0 0" />
+        </Profile>
+
+        <Profile name="dischargeMaterialDialog_dialogTitle" extends="fs25_dialogTitle">
+            <textSize value="18px" />
+        </Profile>
+
+        <Profile name="dischargeMaterialDialog_dialogContent" with="anchorBottomCenter">
+            <size value="376px 600px" />
+            <position value="-10px 80px" />
+        </Profile>
+
+        <Profile name="dischargeMaterialDialog_list" extends="list" with="anchorTopLeft">
+            <size value="372px 600px" />
+            <isHorizontalList value="false" />
+        </Profile>
+
+        <Profile name="dischargeMaterialDialog_listItem" with="anchorTopStretchingX">
+            <height value="56px" />
+
+            <imageSliceId value="placeableMaterialDischarge.list_box" />
+            <imageSelectedSliceId value="placeableMaterialDischarge.list_box_selected" />
+            <imageHighlightedSliceId value="placeableMaterialDischarge.list_box_hover" />
+        </Profile>
+
+        <Profile name="dischargeMaterialDialog_listItemImage" extends="baseReference" with="anchorMiddleLeft">
+            <size value="32px 32px" />
+            <position value="10px -1px" />
+
+            <imageSliceId value="noSlice" />
+        </Profile>
+
+        <Profile name="dischargeMaterialDialog_listItemText" extends="fs25_textDarkHighlight" with="anchorMiddleLeft">
+            <size value="200px 32px" />
+            <position value="56px 0" />
+            <textAutoWidth value="true" />
+        </Profile>
+
+        <Profile name="dischargeMaterialDialog_listSlider" extends="fs25_listSlider">
+            <sliderImageColor value="$preset_fs25_colorGreen" />
+            <startImageColor value="$preset_fs25_colorGreen" />
+            <endImageColor value="$preset_fs25_colorGreen" />
+        </Profile>
+
+        <Profile name="dischargeMaterialDialog_listShadowTop" with="anchorTopCenter">
+            <position value="6px 0" />
+            <size value="370px 32px" />
+
+            <imageSliceId value="placeableMaterialDischarge.list_shadow" />
+            <imageColor value="0 0 0 0.5" />
+        </Profile>
+
+        <Profile name="dischargeMaterialDialog_listShadowBottom" extends="dischargeMaterialDialog_listShadowTop" with="anchorBottomCenter">
+            <position value="0 0" />
+
+            <imageUVRotation value="180" />
+        </Profile>
+    </GuiProfiles>
+</GUI>

@@ -1,0 +1,26 @@
+{
+    "archive": {
+        "targetFile": "build/FS25_0_PlaceableMaterialDischarge.zip",
+        "extensions": [
+            "xml",
+            "dds",
+            "lua"
+        ],
+        "exclude": [
+            ".git/",
+            ".vscode/",
+            "build/",
+            "docs/",
+            "scripts/types.lua"
+        ],
+        "debug": {
+            "exclude": []
+        },
+        "release": {
+            "exclude": [
+                "scripts/debug.lua",
+                "scripts/schema.lua"
+            ]
+        }
+    }
+}

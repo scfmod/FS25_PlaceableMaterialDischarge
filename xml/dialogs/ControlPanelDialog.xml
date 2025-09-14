@@ -1,0 +1,214 @@
+<GUI onOpen="onOpen" onClose="onClose" onCreate="onCreate">
+    <GuiElement profile="newLayer" />
+    <Bitmap id="dialogBg" profile="controlPanelDialog_fullscreenBg" />
+
+    <Bitmap id="dialogElement" profile="controlPanelDialog_dialogBg">
+        <ThreePartBitmap profile="fs25_dialogBgMiddleSmall" />
+        <ThreePartBitmap profile="fs25_dialogBgTopSmall" />
+        <ThreePartBitmap profile="fs25_dialogBgBottom" />
+
+        <Text position="0px -32px" profile="controlPanelDialog_title" text="$l10n_ui_controlPanel" />
+
+        <Bitmap profile="controlPanelDialog_dialogContent">
+
+            <Bitmap profile="controlPanelDialog_listHeader">
+                <Text profile="controlPanelDialog_listHeaderName" text="$l10n_ui_dischargeNode" />
+                <Text profile="controlPanelDialog_listHeaderEmptySpeed" text="$l10n_ui_litersPerSecond" id="listHeaderEmptySpeed" />
+                <Text profile="controlPanelDialog_listHeaderStatus" text="$l10n_ui_status" />
+            </Bitmap>
+
+            <GuiElement profile="controlPanelDialog_listWrapper">
+                <SmoothList profile="controlPanelDialog_list" id="list"
+                    focusInit="onOpen" onClick="onItemClick" onDoubleClick="onItemDoubleClick">
+                    <ListItem profile="controlPanelDialog_listItem">
+                        <ThreePartBitmap profile="controlPanelDialog_listItemBg">
+                            <Bitmap profile="controlPanelDialog_listItemImage" name="image" />
+                            <Text profile="controlPanelDialog_listItemName" name="name" />
+                            <Text profile="controlPanelDialog_listItemFillType" name="fillType" />
+                            <Text profile="controlPanelDialog_listItemEmptySpeed" name="emptySpeed" />
+                            <Text profile="controlPanelDialog_listItemStatus" name="status" />
+                        </ThreePartBitmap>
+                    </ListItem>
+                </SmoothList>
+
+                <ThreePartBitmap profile="controlPanelDialog_listSliderBox">
+                    <Slider dataElementId="list" profile="controlPanelDialog_listSlider" />
+                </ThreePartBitmap>
+
+                <Bitmap profile="controlPanelDialog_listShadowTop" />
+                <Bitmap profile="controlPanelDialog_listShadowBottom" />
+            </GuiElement>
+        </Bitmap>
+
+        <BoxLayout profile="fs25_dialogButtonBox">
+            <Button id="backButton" onClick="onClickBack" profile="buttonBack" text="$l10n_button_back" />
+            <Bitmap profile="fs25_dialogButtonBoxSeparator" />
+            <Button id="settingsButton" profile="buttonActivate" text="$l10n_ui_changeSettings" onClick="onClickSettings" />
+            <Bitmap profile="fs25_dialogButtonBoxSeparator" />
+            <Button id="materialButton" onClick="onClickChangeMaterial" profile="buttonOK" text="$l10n_ui_changeMaterial" />
+        </BoxLayout>
+    </Bitmap>
+
+    <GuiProfiles>
+        <Profile name="controlPanelDialog_fullscreenBg" extends="dialogFullscreenBg">
+            <imageColor value="0.013 0.013 0.013 0.9" />
+        </Profile>
+
+        <Profile name="controlPanelDialog_dialogBg" extends="fs25_dialogBg">
+            <size value="820px 760px" />
+            <imageColor value="0 0 0 0" />
+        </Profile>
+
+        <Profile name="controlPanelDialog_title" extends="fs25_dialogTitle">
+            <textSize value="18px" />
+        </Profile>
+
+        <Profile name="controlPanelDialog_dialogContent">
+            <size value="820px 720px" />
+            <imageColor value="0 0 0 0" />
+        </Profile>
+
+
+        <Profile name="controlPanelDialog_listHeader" extends="baseReference" with="anchorTopCenter">
+            <size value="97% 42px" />
+            <position value="-8px -38px" />
+
+            <imageColor value="0 0 0 0.1" />
+        </Profile>
+
+        <Profile name="controlPanelDialog_listHeaderName" extends="textDefault" with="anchorMiddleLeft">
+            <size value="0 32px" />
+            <position value="96px 0" />
+
+            <textColor value="1 1 1 0.25" />
+            <textAutoWidth value="true" />
+            <textUpperCase value="true" />
+        </Profile>
+        <Profile name="controlPanelDialog_listHeaderEmptySpeed" extends="textDefault" with="anchorMiddleLeft">
+            <size value="180px 32px" />
+            <position value="380px 0" />
+
+            <textUpperCase value="true" />
+            <textColor value="1 1 1 0.25" />
+            <textAlignment value="right" />
+            <hasFrame value="true" />
+            <frameThickness value="2dp 0 0 0" />
+            <frameLeftColor value="1 1 1 0.025" />
+        </Profile>
+        <Profile name="controlPanelDialog_listHeaderStatus" extends="textDefault" with="anchorMiddleRight">
+            <size value="120px 32px" />
+            <position value="-72px 0" />
+
+            <textUpperCase value="true" />
+            <textColor value="1 1 1 0.25" />
+            <textAlignment value="right" />
+            <hasFrame value="true" />
+            <frameThickness value="2dp 0 0 0" />
+            <frameLeftColor value="1 1 1 0.025" />
+        </Profile>
+
+
+        <Profile name="controlPanelDialog_listWrapper" with="anchorMiddleCenter">
+            <position value="-16px 0" />
+            <size value="780px 560px" />
+        </Profile>
+
+        <Profile name="controlPanelDialog_list" extends="list" with="anchorMiddleCenter">
+            <size value="700px 560px" />
+
+            <isHorizontalList value="false" />
+            <selectedWithoutFocus value="true" />
+            <listItemSpacing value="2dp" />
+        </Profile>
+
+        <Profile name="controlPanelDialog_listItem" with="anchorTopStretchingX">
+            <height value="56px" />
+
+            <imageColor value="0 0 0 0" />
+        </Profile>
+
+        <Profile name="controlPanelDialog_listItemBg" extends="baseReference" with="anchorTopStretchingX">
+            <size value="100% 100%" />
+
+            <imageSliceId value="placeableMaterialDischarge.list_box_middle" />
+            <imageColor value="1 1 1 1" />
+            <imageSelectedSliceId value="placeableMaterialDischarge.list_box_middle_selected" />
+            <imageHighlightedSliceId value="placeableMaterialDischarge.list_box_middle_selected" />
+            <imageFocusedSliceId value="placeableMaterialDischarge.list_box_middle_selected" />
+
+            <startImageSize value="64px 0" />
+            <startImageSliceId value="placeableMaterialDischarge.list_box_start" />
+            <startImageSelectedSliceId value="placeableMaterialDischarge.list_box_start_selected" />
+            <startImageHighlightedSliceId value="placeableMaterialDischarge.list_box_start_selected" />
+            <startImageFocusedSliceId value="placeableMaterialDischarge.list_box_start_selected" />
+
+            <endImageSize value="64px 0" />
+            <endImageSliceId value="placeableMaterialDischarge.list_box_end" />
+            <endImageSelectedSliceId value="placeableMaterialDischarge.list_box_end_selected" />
+            <endImageHighlightedSliceId value="placeableMaterialDischarge.list_box_end_selected" />
+            <endImageFocusedSliceId value="placeableMaterialDischarge.list_box_end_selected" />
+        </Profile>
+
+        <Profile name="controlPanelDialog_listItemImage" extends="baseReference" with="anchorMiddleLeft">
+            <size value="32px 32px" />
+            <position value="8px 0" />
+
+            <imageSliceId value="noSlice" />
+        </Profile>
+
+        <Profile name="controlPanelDialog_listItemName" extends="fs25_textDarkHighlight" with="anchorMiddleLeft">
+            <size value="200px 32px" />
+            <position value="56px 9px" />
+            <textAutoWidth value="true" />
+            <textBold value="true" />
+        </Profile>
+        <Profile name="controlPanelDialog_listItemFillType" extends="fs25_textDarkHighlight" with="anchorMiddleLeft">
+            <size value="200px 32px" />
+            <position value="56px -9px" />
+            <textAutoWidth value="true" />
+        </Profile>
+        <Profile name="controlPanelDialog_listItemEmptySpeed" extends="fs25_textDarkHighlight" with="anchorMiddleRight">
+            <size value="200px 32px" />
+            <position value="-180px 0" />
+            <textAutoWidth value="true" />
+            <textAlignment value="right" />
+        </Profile>
+        <Profile name="controlPanelDialog_listItemStatus" extends="fs25_textDefault" with="anchorMiddleRight">
+            <size value="100px 32px" />
+            <position value="-16px 0" />
+
+            <textAutoWidth value="true" />
+            <textColor value="$preset_fs25_colorGreen" />
+            <textSelectedColor value="1 1 1 1" />
+        </Profile>
+
+        <Profile name="controlPanelDialog_listItemStatusDisabled" extends="controlPanelDialog_listItemStatus">
+            <textColor value="1 1 1 0.2" />
+            <textSelectedColor value="0 0 0 0.7" />
+        </Profile>
+
+
+        <Profile name="controlPanelDialog_listSliderBox" extends="fs25_subCategoryListSliderBox">
+            <position value="12px 0" />
+        </Profile>
+        <Profile name="controlPanelDialog_listSlider" extends="fs25_listSlider">
+            <sliderImageColor value="$preset_fs25_colorGreen" />
+            <startImageColor value="$preset_fs25_colorGreen" />
+            <endImageColor value="$preset_fs25_colorGreen" />
+        </Profile>
+
+        <Profile name="controlPanelDialog_listShadowTop" with="anchorTopCenter">
+            <position value="6px 2px" />
+            <size value="100% 32px" />
+
+            <imageSliceId value="placeableMaterialDischarge.list_shadow" />
+            <imageColor value="0 0 0 0.5" />
+        </Profile>
+
+        <Profile name="controlPanelDialog_listShadowBottom" extends="controlPanelDialog_listShadowTop" with="anchorBottomCenter">
+            <position value="0 0" />
+
+            <imageUVRotation value="180" />
+        </Profile>
+    </GuiProfiles>
+</GUI>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<l10n>
+    <texts>
+        <text name="action_controlPanel" text="Open control panel" />
+        <text name="ui_controlPanel" text="Control Panel" />
+        <text name="ui_litersPerSecond" text="Liters per second" />
+        <text name="ui_litersPerHour" text="Liters per hour" />
+        <text name="ui_status" text="Status" />
+        <text name="ui_changeMaterial" text="Change material" />
+        <text name="ui_changeSettings" text="Change settings" />
+        <text name="ui_enabled" text="Enabled" />
+        <text name="ui_dischargeNode" text="Discharge node" />
+        <text name="ui_optionDischargeToGround" text="Discharge to ground" />
+        <text name="ui_optionDischargeToObject" text="Discharge to object" />
+        <text name="ui_optionDischargeToVehicle" text="Discharge to vehicle" />
+        <text name="ui_optionDischargeToAnyObject" text="Discharge to any object" />
+    </texts>
+</l10n>
